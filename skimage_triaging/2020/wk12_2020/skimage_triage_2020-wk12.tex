@@ -1,0 +1,131 @@
+% Created 2020-03-22 Sun 12:50
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Alexandre de Siqueira}
+\date{\today}
+\title{skimage triaging — mar 16, 2020 – mar 22, 2020}
+\hypersetup{
+ pdfauthor={Alexandre de Siqueira},
+ pdftitle={skimage triaging — mar 16, 2020 – mar 22, 2020},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Pull requests}
+\label{sec:orga8056cc}
+
+\subsection{New PRs}
+\label{sec:org89c156a}
+
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/pull/4521}{\#4521 — Adding info on \texttt{venv} activation on Windows}
+
+\item \href{https://github.com/scikit-image/scikit-image/pull/4519}{\#4519 — Fix \texttt{exposure\_adapthist} return when \texttt{clip\_limit == 1}}
+
+\item \href{https://github.com/scikit-image/scikit-image/pull/4518}{\#4518 — Fixing order of elements in docstrings of \texttt{skimage/color/colorconv}}
+
+\item \href{https://github.com/scikit-image/scikit-image/pull/4517}{\#4517 — wip: stub sphinx example to illustrate data type relevance}
+
+\item \href{https://github.com/scikit-image/scikit-image/pull/4515}{\#4515 — example: register rotation and scaling with no shared center}
+\end{itemize}
+
+
+\subsection{Merged PRs}
+\label{sec:org6d4d19b}
+
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/pull/4519}{\#4519 — Fix \texttt{exposure\_adapthist} return when \texttt{clip\_limit == 1}}
+\end{itemize}
+
+\textbf{Relevant points:}
+\begin{enumerate}
+\item The output datatype of \texttt{skimage.exposure.exposure\_adapthist} was different,
+depending on the value of \texttt{clip\_limit}. Now it will always be float.
+\end{enumerate}
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/pull/4518}{\#4518 — Fixing order of elements in docstrings of \texttt{skimage/color/colorconv}}
+\end{itemize}
+
+\textbf{Relevant points:}
+\begin{enumerate}
+\item docstrings on \texttt{skimage.color.colorconv} had elements with order
+different than given on numpy documents. Some small changes on text
+as well.
+\end{enumerate}
+
+
+\subsection{Closed PRs}
+\label{sec:orgd57ca1e}
+
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/pull/4510}{\#4510 — add cast to minimum dtype before \texttt{imsave}}
+\end{itemize}
+
+\textbf{Relevant points:}
+\begin{enumerate}
+\item majority against ``magic'', i.e. unseen/unknown-to-the-user data
+conversion on \texttt{skimage}.
+\item \texttt{@emmanuelle} pointed \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.min\_scalar\_type.html?highlight=min\_scalar\_type\#numpy.min\_scalar\_type}{\texttt{np.min\_scalar\_type}} to downcast data to
+the smallest data type compatible with the data range.
+\end{enumerate}
+
+
+\section{Issues}
+\label{sec:orgcfb9810}
+
+\subsection{New issues}
+\label{sec:org6905c17}
+
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/issues/4520}{\#4520 — Changes required in Contributing.txt file > Info for venv activation on CONTRIBUTING.txt does not suit Windows}
+
+\item \href{https://github.com/scikit-image/scikit-image/issues/4516}{\#4516 — Setting clip-limit to 1 does not return original image. > \texttt{exposure.equalize\_adapthist} changes output datatype}
+
+\item \href{https://github.com/scikit-image/scikit-image/issues/4514}{\#4514 — Specify that \texttt{rgb2lab} function is relative only to sRGB colorspace}
+
+\item \href{https://github.com/scikit-image/scikit-image/issues/4513}{\#4513 — Add example of natsort usage in documentation}
+\end{itemize}
+
+
+\subsection{Closed issues}
+\label{sec:org68efdd9}
+
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/issues/4516}{\#4516 — Setting clip-limit to 1 does not return original image. > \texttt{exposure.equalize\_adapthist} changes output datatype}
+\end{itemize}
+
+\textbf{Relevant points:}
+\begin{enumerate}
+\item Solved by \href{https://github.com/scikit-image/scikit-image/pull/4519}{\#4519}.
+\end{enumerate}
+\begin{itemize}
+\item \href{https://github.com/scikit-image/scikit-image/issues/4509}{\#4509 — saving a \texttt{np.uint64} to png removes (low contrast) image content}
+\end{itemize}
+
+\textbf{Relevant points:}
+\begin{enumerate}
+\item \texttt{@psteinb} says he does not see a reason for dropping data.
+\item as pointed by \texttt{@rfezzani}, this was an expected result — a warning is
+raised in this specific case. He points also that we use `imageio`
+when saving images, and they have the same behavior.
+\end{enumerate}
+\end{document}

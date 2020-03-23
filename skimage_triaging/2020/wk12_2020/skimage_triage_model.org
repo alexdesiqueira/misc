@@ -1,0 +1,21 @@
+* skimage triaging — mon DD, YYYY – mon DD, YYYY
+
+** New PRs and their numbers
+
+*** Approved / merged PRs
+
+
+*** Relevant comments / follow up
+
+
+** New issues and their numbers
+
+*** Bugs and their description
+
+*** New tools / general comments
+
+** Labeled PRs / issues
+
+** Tagged PRs / issue
+
+** Requested reviews

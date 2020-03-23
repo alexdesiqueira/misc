@@ -1,0 +1,71 @@
+#+TITLE: skimage triaging — mar 16, 2020 – mar 22, 2020
+
+* Pull requests
+
+** New PRs
+
+- [[https://github.com/scikit-image/scikit-image/pull/4521][#4521 — Adding info on ~venv~ activation on Windows]]
+
+- [[https://github.com/scikit-image/scikit-image/pull/4519][#4519 — Fix ~exposure_adapthist~ return when ~clip_limit == 1~]]
+
+- [[https://github.com/scikit-image/scikit-image/pull/4518][#4518 — Fixing order of elements in docstrings of ~skimage/color/colorconv~]]
+
+- [[https://github.com/scikit-image/scikit-image/pull/4517][#4517 — wip: stub sphinx example to illustrate data type relevance]]
+
+- [[https://github.com/scikit-image/scikit-image/pull/4515][#4515 — example: register rotation and scaling with no shared center]]
+
+
+** Merged PRs
+
+- [[https://github.com/scikit-image/scikit-image/pull/4519][#4519 — Fix ~exposure_adapthist~ return when ~clip_limit == 1~]]
+
+*Relevant points:*
+  1. The output datatype of ~skimage.exposure.exposure_adapthist~ was different,
+     depending on the value of ~clip_limit~. Now it will always be float.
+
+- [[https://github.com/scikit-image/scikit-image/pull/4518][#4518 — Fixing order of elements in docstrings of ~skimage/color/colorconv~]]
+
+*Relevant points:*
+  1. docstrings on ~skimage.color.colorconv~ had elements with order
+     different than given on numpy documents. Some small changes on text
+     as well.
+
+
+** Closed PRs
+
+- [[https://github.com/scikit-image/scikit-image/pull/4510][#4510 — add cast to minimum dtype before ~imsave~]]
+
+*Relevant points:*
+  1. majority against ``magic'', i.e. unseen/unknown-to-the-user data
+     conversion on ~skimage~.
+  2. ~@emmanuelle~ pointed [[https://docs.scipy.org/doc/numpy/reference/generated/numpy.min_scalar_type.html?highlight=min_scalar_type#numpy.min_scalar_type][~np.min_scalar_type~]] to downcast data to
+     the smallest data type compatible with the data range.
+
+
+* Issues
+
+** New issues
+
+- [[https://github.com/scikit-image/scikit-image/issues/4520][#4520 — Changes required in Contributing.txt file > Info for venv activation on CONTRIBUTING.txt does not suit Windows]]
+
+- [[https://github.com/scikit-image/scikit-image/issues/4516][#4516 — Setting clip-limit to 1 does not return original image. > ~exposure.equalize_adapthist~ changes output datatype]]
+
+- [[https://github.com/scikit-image/scikit-image/issues/4514][#4514 — Specify that ~rgb2lab~ function is relative only to sRGB colorspace]]
+
+- [[https://github.com/scikit-image/scikit-image/issues/4513][#4513 — Add example of natsort usage in documentation]]
+
+
+** Closed issues
+
+- [[https://github.com/scikit-image/scikit-image/issues/4516][#4516 — Setting clip-limit to 1 does not return original image. > ~exposure.equalize_adapthist~ changes output datatype]]
+
+*Relevant points:*
+  1. Solved by [[https://github.com/scikit-image/scikit-image/pull/4519][#4519]].
+
+- [[https://github.com/scikit-image/scikit-image/issues/4509][#4509 — saving a ~np.uint64~ to png removes (low contrast) image content]]
+
+*Relevant points:*
+  1. ~@psteinb~ says he does not see a reason for dropping data.
+  2. as pointed by ~@rfezzani~, this was an expected result — a warning is
+     raised in this specific case. He points also that we use `imageio`
+     when saving images, and they have the same behavior.
