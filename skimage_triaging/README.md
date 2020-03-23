@@ -1,1 +1,1 @@
-# skimage-triaging — 2020
+# skimage-triaging
